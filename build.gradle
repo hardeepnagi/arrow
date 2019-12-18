@@ -118,6 +118,7 @@ subprojects { project ->
         outputDirectory = pathApiDocs
         configuration {
             includes = ['README.md']
+            moduleName = 'arrow'
             reportUndocumented = false
             // Specifies the location of the project source code on the Web.
             // If provided, Dokka generates "source" links for each declaration.

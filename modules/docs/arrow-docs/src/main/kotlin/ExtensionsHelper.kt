@@ -1,6 +1,7 @@
 package arrow.reflect
 
 import arrow.aql.Box
+import arrow.syntax.function.partially2
 import kotlin.reflect.KClass
 import kotlin.reflect.full.declaredFunctions
 
@@ -19,7 +20,7 @@ fun DataType.tcMarkdownList(): String =
         "|__${entry.key}__|" +
           entry.value.joinToString(
             separator = ", ",
-            transform = TypeClass::docsMarkdownLink
+            transform = TypeClass::docsMarkdownLink.partially2(entry.key)
           ) + "|"
       }.joinToString(lineSeparator)
 
@@ -37,18 +38,31 @@ fun TypeClass.dtMarkdownList(): String =
         "|__${entry.key}__|" +
           entry.value.joinToString(
             separator = ", ",
-            transform = DataType::docsMarkdownLink
+            transform = DataType::docsMarkdownLink.partially2(entry.key)
           ) + "|"
       }.joinToString(lineSeparator)
 
-fun TypeClass.docsMarkdownLink(): String =
-  kclass.docsMarkdownLink()
+fun TypeClass.docsMarkdownLink(packageName: String): String =
+  kclass.docsMarkdownLink(packageName)
 
-fun DataType.docsMarkdownLink(): String =
-  kclass.docsMarkdownLink()
+fun DataType.docsMarkdownLink(packageName: String): String =
+  kclass.docsMarkdownLink(packageName)
 
-fun <A : Any> KClass<A>.docsMarkdownLink(): String =
-  "[$simpleName]({{ '/docs/${qualifiedName?.toLowerCase()?.replace(".", "/")}' | relative_url }})"
+fun String.toKebabCase(): String {
+  var text: String = ""
+  this.forEach {
+    if (it.isUpperCase()) {
+      text += "-"
+      text += it.toLowerCase()
+    } else {
+      text += it
+    }
+  }
+  return text
+}
+
+fun <A : Any> KClass<A>.docsMarkdownLink(packageName: String): String =
+  "[$simpleName]({{ '/docs/apidocs/arrow/${packageName.toKebabCase()}/${simpleName?.toKebabCase()}' | relative_url }})"
 
 fun TypeClass.hierarchyGraph(): String =
   """
