@@ -54,7 +54,7 @@ buildscript {
     }
 }
 
-def pathApiDocs = "${rootDir}/modules/docs/arrow-docs/docs/docs/apidocs"
+def pathApiDocs = "${rootDir}/modules/docs/arrow-docs/docs/apidocs"
 
 allprojects {
     apply plugin: 'base'
@@ -241,7 +241,7 @@ dependencyUpdates {
                 .inject(title) { acc, dependency ->
                     "$acc\n${dependency.group}:${dependency.name}:${dependency.version}"
                 }
-            
+
             throw new GradleException(message)
         }
     }
