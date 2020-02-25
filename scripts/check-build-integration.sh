@@ -2,27 +2,24 @@
 
 set -ex
 export JAVA_OPTS="-Xms512m -Xmx1024m"
-cd $(dirname $0)/..
-. ./scripts/commons.sh
+cd $(dirname $0)/../..
 export BASEDIR=$(pwd)
+. ./arrow/scripts/commons.sh
 
-replaceOSSbyLocalRepository generic-conf.gradle
-removeAnkFromCommonBuild doc-conf.gradle
+replaceOSSbyLocalRepository $BASEDIR/arrow/generic-conf.gradle
 
-for repository in $(cat lists/build.txt); do
-    git clone https://github.com/arrow-kt/$repository.git
+for repository in $(cat $BASEDIR/arrow/lists/build.txt); do
+    if [ ! -d $BASEDIR/$repository ]; then
+        cd $BASEDIR
+        git clone https://github.com/arrow-kt/$repository.git
+    fi
 
-    replaceGlobalPropertiesbyLocalConf $repository/gradle.properties
+    replaceGlobalPropertiesbyLocalConf $BASEDIR/$repository/gradle.properties
+    removeArrowDocs $BASEDIR/$repository/settings.gradle
 
-    removeAnkFromCustomBuild $repository/build.gradle
-    for module in $repository/arrow-*; do
-        removeAnkFromCustomBuild $module/build.gradle
-    done
-    replaceOSSbyLocalRepository $repository/build.gradle
-
-    ./scripts/project-install.sh $repository
+    $BASEDIR/arrow/scripts/project-install.sh $repository
 done
 
-for repository in $(cat lists/build.txt); do
-    ./scripts/project-simple-build.sh $repository
+for repository in $(cat $BASEDIR/arrow/lists/build.txt); do
+    $BASEDIR/arrow/scripts/project-build.sh $repository
 done

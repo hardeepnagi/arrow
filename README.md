@@ -1,4 +1,4 @@
-<a href="https://arrow-kt.io" title="Arrow website"><img src="https://github.com/arrow-kt/arrow/blob/master/modules/docs/arrow-docs/docs/img/home/header-image.png" width="200" alt=""></a>
+<a href="https://arrow-kt.io" title="Arrow website"><img src="https://github.com/arrow-kt/arrow-site/blob/master/docs/img/home/header-image.png" width="200" alt=""></a>
 
 [![Maven Central](https://img.shields.io/maven-central/v/io.arrow-kt/arrow-core?color=%234caf50)](https://maven-badges.herokuapp.com/maven-central/io.arrow-kt/arrow-core)
 <!-- Remove the following on when having just one WIP again -->
@@ -42,7 +42,6 @@ This repository orchestrates the global configuration and checks of the **Λrrow
 | <img src="https://github.com/arrow-kt/arrow-site/blob/master/docs/img/incubator/arrow-incubator-brand-sidebar.svg" alt="" width="50px"> | [Λrrow Incubator](https://github.com/arrow-kt/arrow-incubator) | `git@github.com:arrow-kt/arrow-incubator.git` | `https://github.com/arrow-kt/arrow-incubator.git` |
 | <img src="https://github.com/arrow-kt/arrow-site/blob/master/docs/img/core/arrow-core-brand-sidebar.svg" alt="" width="50px"> | [Λrrow Integrations](https://github.com/arrow-kt/arrow-integrations) | `git@github.com:arrow-kt/arrow-integrations.git` | `https://github.com/arrow-kt/arrow-integrations.git` |
 | <img src="https://github.com/arrow-kt/arrow-site/blob/master/docs/img/optics/arrow-optics-brand-sidebar.svg" alt="" width="50px"> | [Λrrow Optics](https://github.com/arrow-kt/arrow-optics) | `git@github.com:arrow-kt/arrow-optics.git` | `https://github.com/arrow-kt/arrow-optics.git` |
-| <img src="https://github.com/arrow-kt/arrow-site/blob/master/docs/img/core/arrow-core-brand-sidebar.svg" alt="" width="50px"> | [Λrrow Test](https://github.com/arrow-kt/arrow-test) | `git@github.com:arrow-kt/arrow-test.git` | `https://github.com/arrow-kt/arrow-test.git` |
 | <img src="https://github.com/arrow-kt/arrow-site/blob/master/docs/img/core/arrow-core-brand-sidebar.svg" alt="" width="50px"> | [Λrrow UI](https://github.com/arrow-kt/arrow-ui) | `git@github.com:arrow-kt/arrow-ui.git` | `https://github.com/arrow-kt/arrow-ui.git` |
 
 Find more details in [Move arrow repository content to multi-repo](https://github.com/arrow-kt/arrow/tree/master/docs/move-to-multi-repo).
