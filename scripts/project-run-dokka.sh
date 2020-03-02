@@ -1,9 +1,7 @@
 #!/bin/bash
 
-set -ex
+set -e
 
-if [ "$1" != "arrow-docs" ]; then
-    echo "For $1 ..."
-    cd $BASEDIR/$1
-    ./gradlew clean dokka
-fi
+echo "For $1 ..."
+cd $BASEDIR/$1
+./gradlew clean dokka

@@ -1,5 +1,5 @@
 #!/bin/bash
-
-set -e 
+ 
+set -e
 cd $BASEDIR/$1
-git checkout .
+./gradlew test
